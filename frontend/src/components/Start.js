@@ -4,16 +4,16 @@ import { Buttons } from '../GlobalStyles'
 import { InnerWrapper } from '../GlobalStyles';
 import { OuterWrapper } from '../GlobalStyles';
 import { Headline } from '../GlobalStyles';
-import { Batman } from '../GlobalStyles';
+import { Image } from '../GlobalStyles';
 import { Link } from 'react-router-dom'
 
 export const Start = () => {
     return (
         <OuterWrapper>
         <InnerWrapper>
-            <Batman />
-            <Headline><span>The Batcave</span></Headline>
-            <Text>Sign up now to get exclusive access!</Text>
+            <Image />
+            <Headline><span>XXX</span></Headline>
+            <Text>xxx</Text>
             <ButtonLink to="/register">
                 <Buttons type="button">Sign up</Buttons>
             </ButtonLink>

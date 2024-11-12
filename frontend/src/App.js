@@ -8,11 +8,10 @@ import { Register } from './components/Register'
 import { Main } from 'components/Main';
 import { NotFound } from 'components/NotFound';
 import { user } from 'reducers/user'
-// import { movies } from 'reducers/movies';
+
 
 const reducer = combineReducers({
   user: user.reducer,
-  // movies: movies.reducer
 })
 
 const store = configureStore({reducer})

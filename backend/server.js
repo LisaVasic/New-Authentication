@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/project-auth";
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/new-authentication";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
@@ -14,8 +14,17 @@ mongoose.Promise = Promise;
 const port = process.env.PORT || 8080;
 const app = express();
 
+// Define CORS options
+const corsOptions = {
+  origin: "http://localhost:3000",  // Allow requests from your frontend
+  methods: ["GET", "POST", "PUT", "DELETE"],  // Allowed methods
+  credentials: true  // Enable if using cookies or sessions
+};
+
+
+
 // Add middlewares to enable cors and json body parsing
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const UserSchema = new mongoose.Schema({
@@ -105,29 +114,10 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
-// const MovieSchema = new mongoose.Schema({
-//   Year: {type: Number},
-//   Title: {type: String},
-//   Rated: {type: String},
-//   Director: {type: String},
-//   Released: {type: String},
-//   Writer: {type: String},
-//   Production: {type: String},
-//   Actors: {type: String},
-//   Runtime: {type: String},
-//   Awards: {type: String},
-//   ImdbVotes: {type: String},
-//   ImdbRating: {type: Number},
-//   RottenTomatoScore: {type: String},
-//   Metascore: {type: Number},
-// }); 
-
-// const Movie = mongoose.model("Movie", MovieSchema);
-
 //This is the endpoint that only can be reached if you have a valid accesstoken
 app.get('/main', authenticateUser);
 app.get("/main", (req, res) => {
-  const secret = "You now have access to the mysterious batcave"
+  const secret = "Congratulations, you are in!"
   try{
     res.status(200).json({
       success: true,
@@ -140,15 +130,13 @@ app.get("/main", (req, res) => {
     });
   }
 })
-// app.get('/main', async (req, res) =>{
-//   const movies = await Movie.find({});
-//   res.status(200).json({success: true, response: movies});
-// });
 
 // Start defining your routes here
 app.get("/", (req, res) => {
-  res.send("Hello Batman!");
+  res.send("Hello!");
 });
+
+
 
 // Start the server
 app.listen(port, () => {

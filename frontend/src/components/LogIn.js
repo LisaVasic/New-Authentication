@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { Buttons } from '../GlobalStyles'
 import { InnerWrapper } from '../GlobalStyles';
 import { OuterWrapper } from '../GlobalStyles';
-import { Batman } from '../GlobalStyles';
+import { Image } from '../GlobalStyles';
 import { Headline, TextInput, Form, Label } from '../GlobalStyles';
 import { API_URL } from 'utils/utils';
 import { user } from 'reducers/user';
@@ -60,7 +60,7 @@ export const LogIn = () => {
   return (
     <OuterWrapper>
     <InnerWrapper>
-        <Batman />
+        <Image />
         <Headline><span>Log in</span></Headline>
           <Form onSubmit={onFormSubmit}>
             <Label htmlFor="username">Username:</Label>

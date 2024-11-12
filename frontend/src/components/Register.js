@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Buttons } from '../GlobalStyles'
 import { InnerWrapper } from '../GlobalStyles';
 import { OuterWrapper } from '../GlobalStyles';
-import { Batman } from '../GlobalStyles';
+import { Image } from '../GlobalStyles';
 import { Headline, TextInput, Form, Label } from '../GlobalStyles';
 import { API_URL } from 'utils/utils';
 import { user } from 'reducers/user';
@@ -28,6 +28,7 @@ export const Register = () => {
   // When registration form is submitted the data in sent and stored at register-endpoint in database
   const onFormSubmit = (event) => {
     event.preventDefault();
+    console.log('Form submitted')
     const options = {
       method: "POST",
       headers: {"content-type": "application/json"},
@@ -57,7 +58,7 @@ export const Register = () => {
   return (
     <OuterWrapper>
     <InnerWrapper>
-        <Batman />
+        <Image />
         <Headline><span>Sign up</span></Headline>
           <Form onSubmit={onFormSubmit}>
             <Label htmlFor="username">Username:</Label>
